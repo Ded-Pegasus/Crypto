@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="menu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1120.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.MenuController">
+   <children>
+      <Text fill="#a82020" layoutX="395.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose an action" wrappingWidth="329.06298828125">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Text>
+      <Button fx:id="Base64Button" layoutX="319.0" layoutY="257.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3;" text="Base64" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="ASN1Button" layoutX="648.0" layoutY="257.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3;" text="ASN.1" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <Button fx:id="P7bButton" layoutX="484.0" layoutY="428.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3;" text="P7B" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
