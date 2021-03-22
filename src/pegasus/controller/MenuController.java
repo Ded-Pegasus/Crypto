@@ -29,6 +29,13 @@ public class MenuController {
     @FXML
     private Button ASN1Button;
 
+    @FXML
+    private Button Sign;
+
+    @FXML
+    private Button Verify;
+
+
 
     @FXML
     void initialize() {
@@ -42,6 +49,14 @@ public class MenuController {
         });
 
         ASN1Button.setOnAction(event -> {
+            loadFxml(Windows.getAsn1());
+        });
+
+        Sign.setOnAction(event -> {
+            loadFxml(Windows.getSign());
+        });
+
+        Verify.setOnAction(event -> {
             loadFxml(Windows.getAsn1());
         });
     }

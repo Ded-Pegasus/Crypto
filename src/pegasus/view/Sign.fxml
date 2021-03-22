@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="XmlSign" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="726.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.SignController">
+   <children>
+      <ToolBar layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="chooseCertificate" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryXml" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="369.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="503.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Xml" wrappingWidth="53.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="execute" layoutX="17.0" layoutY="405.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8;" text="Sign" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <ToolBar layoutX="14.0" layoutY="338.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="chooseP7b" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryP7b" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="364.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="498.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyStore" wrappingWidth="115.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="Enveloping" layoutX="157.0" layoutY="125.0" mnemonicParsing="false" onAction="#decodeAction" text="Enveloping  " textFill="#b50f0f">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="method" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="Enveloped" layoutX="14.0" layoutY="125.0" mnemonicParsing="false" onAction="#encodeAction" text="Enveloped  " textFill="#ae1010" toggleGroup="$method">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <Text fx:id="message" fill="WHITE" layoutX="345.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="369.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enveloped Signature" wrappingWidth="292.0546875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <RadioButton fx:id="Detached" layoutX="305.0" layoutY="125.0" mnemonicParsing="false" onAction="#decodeAction" text="Detached " textFill="#b50f0f">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="method1" />
+         </toggleGroup>
+      </RadioButton>
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DigestMethod ">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ChoiceBox layoutX="14.0" layoutY="215.0" prefHeight="27.0" prefWidth="277.0" />
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SignatureMethod ">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ChoiceBox layoutX="14.0" layoutY="297.0" prefHeight="27.0" prefWidth="277.0" />
+   </children>
+</AnchorPane>
