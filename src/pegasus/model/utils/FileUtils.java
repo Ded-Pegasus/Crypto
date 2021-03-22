@@ -1,4 +1,4 @@
-package pegasus.model.save;
+package pegasus.model.utils;
 
 import org.bouncycastle.openssl.PEMWriter;
 
@@ -10,7 +10,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public abstract class SaveFile {
+public abstract class FileUtils {
 
     public static void pemWriter(File file, Object object) throws IOException {
         FileOutputStream outputStream = new FileOutputStream(file);

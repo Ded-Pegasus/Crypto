@@ -15,7 +15,7 @@ import java.util.List;
 
 public abstract class ConvertBase64ToObject {
 
-    public static List<X509Certificate> base64ToCertificates(String[] encodeCertificates) throws CertificateDecodeException {
+    public static List<X509Certificate> base64ToCertificate(String[] encodeCertificates) throws CertificateDecodeException {
 
         List<X509Certificate> certificates = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public abstract class ConvertBase64ToObject {
         return certificates;
     }
 
-    public static List<X509CRL> base64ToCrls(String[] encodeCrls) throws CRLsDecodeException {
+    public static List<X509CRL> base64ToCrl(String[] encodeCrls) throws CRLsDecodeException {
 
         List<X509CRL> crls = new ArrayList<>();
 

@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import pegasus.model.base64.Flag;
 import pegasus.model.p7b.encode.EncodeToP7b;
 import pegasus.model.p7b.encode.TypeFile;
-import pegasus.model.save.SaveObject;
+import pegasus.model.utils.SaveObject;
 import pegasus.model.scan.ReadObjectForDirectory;
 import pegasus.model.scan.ReadObjectsForDirectory;
 import sun.security.pkcs.PKCS7;
