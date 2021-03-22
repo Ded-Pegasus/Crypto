@@ -94,6 +94,7 @@ public class Base64Controller {
         decodeFlag.setSelected(true);
         createFile.setSelected(true);
         text.setWrapText(true);
+        text.getStylesheets().add("/pegasus/view/TextAreaBlue.css");
 
         addDirectory.setOnAction(event -> {
             if (decodeFlag.isSelected()) {

@@ -45,7 +45,7 @@
             <ToggleGroup fx:id="createGroup" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="createText" layoutX="130.0" layoutY="46.0" mnemonicParsing="false" onAction="#createTextFlag" prefHeight="30.0" prefWidth="107.0" text="Text" textFill="#e83e3e" toggleGroup="$createGroup">
+      <RadioButton fx:id="createText" layoutX="130.0" layoutY="46.0" mnemonicParsing="false" onAction="#createTextFlag" prefHeight="30.0" prefWidth="107.0" text="text" textFill="#e83e3e" toggleGroup="$createGroup">
          <font>
             <Font size="15.0" />
          </font>

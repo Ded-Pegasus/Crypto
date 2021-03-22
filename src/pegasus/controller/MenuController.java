@@ -26,6 +26,9 @@ public class MenuController {
     @FXML
     private Button P7bButton;
 
+    @FXML
+    private Button ASN1Button;
+
 
     @FXML
     void initialize() {
@@ -36,6 +39,10 @@ public class MenuController {
 
         P7bButton.setOnAction(event -> {
             loadFxml(Windows.getP7b());
+        });
+
+        ASN1Button.setOnAction(event -> {
+            loadFxml(Windows.getAsn1());
         });
     }
 

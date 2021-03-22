@@ -1,0 +1,6 @@
+.text-area {
+    -fx-text-fill: red;
+    -fx-control-inner-background: #00008B;
+    -fx-highlight-fill: red;
+    -fx-highlight-text-fill: yellow;
+}

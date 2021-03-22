@@ -103,18 +103,15 @@ public class P7bController {
         });
 
         chooseP7b.setOnAction(event -> {
-
             File file = null;
             if (codeFlag == CodeFlag.Encode) {
                 file = getPathToDirectory();
             } else if (codeFlag == CodeFlag.Decode) {
                 file = getPathToFile();
             }
-
             if (file != null) {
                 directoryP7b.setText(file.getAbsolutePath());
             }
-
         });
 
         execute.setOnAction(event -> ExecuteEvent.execute(directoryCrls, directoryCert, directoryP7b, codeFlag, message));
