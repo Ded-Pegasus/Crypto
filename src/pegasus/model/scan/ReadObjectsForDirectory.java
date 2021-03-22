@@ -2,22 +2,17 @@ package pegasus.model.scan;
 
 import org.apache.commons.io.IOUtils;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
-import pegasus.model.p7b.encode.TypeFile;
-import sun.misc.BASE64Decoder;
-import sun.security.x509.X509CRLImpl;
-import sun.security.x509.X509CertImpl;
+import pegasus.model.p7b.bean.TypeFile;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.cert.CRLException;
-import java.security.cert.CertificateException;
-import java.security.cert.X509CRL;
-import java.security.cert.X509Certificate;
+import java.security.cert.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class ReadObjectsForDirectory {
 
@@ -31,7 +26,10 @@ public abstract class ReadObjectsForDirectory {
                 fileNames.add(entry.getFileName().toString());
             }
         } catch (IOException e) {
-            System.err.println(e);
+            e.printStackTrace();
+        }
+        if (type.equals(TypeFile.cer)) {
+            fileNames.addAll(scanRepository(directory, TypeFile.der));
         }
         return fileNames;
     }
@@ -41,7 +39,7 @@ public abstract class ReadObjectsForDirectory {
 
         ArrayList<String> filesNames = scanRepository(directory, typeFile);
 
-        if (typeFile.equals(TypeFile.cer)) {
+        if (typeFile.equals(TypeFile.cer) || typeFile.equals(TypeFile.der)) {
             ArrayList<X509Certificate> certificates = new ArrayList<>();
             try {
                 certificates = readCertificates(directory, filesNames);
@@ -54,7 +52,7 @@ public abstract class ReadObjectsForDirectory {
             ArrayList<X509CRL> crls = new ArrayList<>();
             try {
                 crls = readX509Crls(directory, filesNames);
-            } catch (CRLException | IOException e) {
+            } catch (CRLException | IOException | CertificateException e) {
                 e.printStackTrace();
             }
             return crls;
@@ -88,43 +86,30 @@ public abstract class ReadObjectsForDirectory {
 
     private static ArrayList<X509Certificate> readCertificates(String directory, ArrayList<String> fileNames)
             throws FileNotFoundException, CertificateException {
-
         ArrayList<X509Certificate> certificates = new ArrayList<>();
         for (String fileName : fileNames) {
             FileInputStream fileInputStream =
                     new FileInputStream(directory + fileName);
-            X509Certificate certificate = new X509CertImpl(fileInputStream);
+            X509Certificate certificate = (X509Certificate) getCertificateFactory().generateCertificate(fileInputStream);
             certificates.add(certificate);
         }
         return certificates;
     }
 
     private static ArrayList<X509CRL> readX509Crls(String directory, ArrayList<String> fileNames)
-            throws IOException, CRLException {
+            throws IOException, CRLException, CertificateException {
 
         ArrayList<X509CRL> x509CRLS = new ArrayList<>();
         for (String fileName : fileNames) {
-            Scanner scanner = new Scanner(new File(directory + fileName));
-            X509CRL crl = new X509CRLImpl(readBase64Crl(scanner));
+            FileInputStream fileInputStream =
+                    new FileInputStream(directory + fileName);
+            X509CRL crl = (X509CRL) getCertificateFactory().generateCRL(fileInputStream);
             x509CRLS.add(crl);
         }
         return x509CRLS;
     }
 
-    private static byte[] readBase64Crl(Scanner scanner) throws IOException {
-        String beginCert = "-----BEGIN X509 CRL-----";
-        String endCert = "-----END X509 CRL-----";
-        StringBuilder byteCertificate = new StringBuilder();
-        String analize = "";
-        if (scanner.nextLine().equals(beginCert)) {
-            while (!analize.equals(endCert)) {
-                byteCertificate.append(analize);
-                analize = scanner.nextLine();
-            }
-        }
-        ByteArrayInputStream byteArrayInputStream =
-                new ByteArrayInputStream(byteCertificate.toString().getBytes());
-        BASE64Decoder decoder = new BASE64Decoder();
-        return decoder.decodeBuffer(byteArrayInputStream);
+    private static CertificateFactory getCertificateFactory() throws CertificateException {
+        return CertificateFactory.getInstance("X.509");
     }
 }

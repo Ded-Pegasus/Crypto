@@ -9,6 +9,7 @@ import pegasus.model.base64.ConvertBase64ToObject;
 import pegasus.model.bean.exception.AttributeCertificateDecodeException;
 import pegasus.model.bean.exception.CRLsDecodeException;
 import pegasus.model.bean.exception.CertificateDecodeException;
+import pegasus.model.p7b.bean.TypeFile;
 import sun.security.pkcs.PKCS7;
 
 import javax.naming.InvalidNameException;
@@ -71,12 +72,18 @@ public class SaveObject extends FileUtils {
         return directoryChooser.showDialog(stage);
     }
 
-    public static File chooseFile(Stage stage) {
+    public static File chooseFile(Stage stage, TypeFile typeFile) {
         final FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Crls, Certificates",
-                        "*.crl" ,"*.cer", "*.pem", "*.der")
-                );
+        if (typeFile.equals(TypeFile.certificates)) {
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Crls, Certificates",
+                            "*.crl", "*.cer", "*.pem", "*.der")
+            );
+        } else if (typeFile.equals(TypeFile.p7b)){
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("PKCS#7",
+                            "*.p7b"));
+        }
         return fileChooser.showOpenDialog(stage);
     }
 

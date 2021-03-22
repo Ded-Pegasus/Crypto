@@ -6,9 +6,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import pegasus.model.base64.CreateFlag;
+import pegasus.model.base64.bean.CreateFlag;
 import pegasus.model.base64.ExecuteEvent;
-import pegasus.model.base64.Flag;
+import pegasus.model.base64.bean.CodeFlag;
+import pegasus.model.p7b.bean.TypeFile;
 import pegasus.model.utils.SaveObject;
 
 import java.io.File;
@@ -21,7 +22,7 @@ public class Base64Controller {
 
     public TextField pathDirectory;
 
-    public Flag flag;
+    public CodeFlag codeFlag;
 
     public CreateFlag createFlag;
 
@@ -77,12 +78,12 @@ public class Base64Controller {
 
     @FXML
     void decodeAction(ActionEvent event) {
-        flag = Flag.Decode;
+        codeFlag = CodeFlag.Decode;
     }
 
     @FXML
     void encodeAction(ActionEvent event) {
-        flag = Flag.Encode;
+        codeFlag = CodeFlag.Encode;
     }
 
 
@@ -97,8 +98,7 @@ public class Base64Controller {
         addDirectory.setOnAction(event -> {
             if (decodeFlag.isSelected()) {
                 Stage stage = (Stage) Base64.getScene().getWindow();
-                File file = SaveObject.chooseFile(stage);
-
+                File file = SaveObject.chooseFile(stage, TypeFile.certificates);
                 if (file != null) {
                     pathDirectory.setText(file.getAbsolutePath());
                 }

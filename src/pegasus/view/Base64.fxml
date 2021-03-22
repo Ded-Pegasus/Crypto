@@ -32,7 +32,7 @@
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <Text fx:id="message" fill="RED" layoutX="237.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="291.0">
+      <Text fx:id="message" fill="GREY" layoutX="237.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="291.0">
          <font>
             <Font size="29.0" />
          </font>

@@ -6,6 +6,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
+import pegasus.model.base64.bean.CreateFlag;
+import pegasus.model.base64.bean.CodeFlag;
 import pegasus.model.scan.ReadObjectForDirectory;
 import pegasus.model.utils.SaveObject;
 
@@ -34,9 +36,9 @@ public class ExecuteEvent {
                 int errorInt = 0;
                 String[] textData = new String[1];
                 textData[0] = text.getText();
-                if (button.getText().equals(Flag.Encode.name())) {
+                if (button.getText().equals(CodeFlag.Encode.name())) {
                     message.setText(SaveObject.saveFile(textData, pathDirectory));
-                } else if (button.getText().equals(Flag.Decode.name())) {
+                } else if (button.getText().equals(CodeFlag.Decode.name())) {
                     String base64 = "";
                     try {
                         X509Certificate x509Certificate = ReadObjectForDirectory.readCertificate(pathDirectory.getText());
@@ -76,7 +78,7 @@ public class ExecuteEvent {
             }
         } else if (createButton.getText().equals(CreateFlag.text.name()) && text != null) {
             String textData = text.getText();
-            if (button.getText().equals(Flag.Encode.name())) {
+            if (button.getText().equals(CodeFlag.Encode.name())) {
                 try {
                     String base64 = java.util.Base64.getEncoder().encodeToString(textData.getBytes(StandardCharsets.UTF_8));
                     message.setText("Text encoded success");
@@ -84,7 +86,7 @@ public class ExecuteEvent {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (button.getText().equals(Flag.Decode.name())) {
+            } else if (button.getText().equals(CodeFlag.Decode.name())) {
                 try {
                     byte[] bytes = java.util.Base64.getDecoder().decode(textData);
                     String decodeBase64 = new String(bytes);
