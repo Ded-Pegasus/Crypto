@@ -1,9 +1,9 @@
 package pegasus.model.base64;
 
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
-import pegasus.model.bean.exception.AttributeCertificateDecodeException;
-import pegasus.model.bean.exception.CRLsDecodeException;
-import pegasus.model.bean.exception.CertificateDecodeException;
+import pegasus.model.exception.AttributeCertificateDecodeException;
+import pegasus.model.exception.CRLsDecodeException;
+import pegasus.model.exception.CertificateDecodeException;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateFactory;

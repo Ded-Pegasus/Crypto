@@ -4,7 +4,7 @@ import javafx.scene.control.TextArea;
 import org.bouncycastle.asn1.ASN1InputStream;
 import org.bouncycastle.asn1.ASN1Primitive;
 import org.bouncycastle.asn1.util.ASN1Dump;
-import pegasus.model.bean.exception.ASN1ExceptionParse;
+import pegasus.model.exception.ASN1ExceptionParse;
 
 import java.io.ByteArrayInputStream;
 import java.util.Base64;

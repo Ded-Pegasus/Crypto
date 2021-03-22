@@ -1,4 +1,4 @@
-package pegasus.model.bean.exception;
+package pegasus.model.exception;
 
 public class ASN1ExceptionParse extends Exception {
     private final int number = 3196;

@@ -6,9 +6,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
 import pegasus.model.base64.ConvertBase64ToObject;
-import pegasus.model.bean.exception.AttributeCertificateDecodeException;
-import pegasus.model.bean.exception.CRLsDecodeException;
-import pegasus.model.bean.exception.CertificateDecodeException;
+import pegasus.model.exception.AttributeCertificateDecodeException;
+import pegasus.model.exception.CRLsDecodeException;
+import pegasus.model.exception.CertificateDecodeException;
 import pegasus.model.p7b.bean.TypeFile;
 import sun.security.pkcs.PKCS7;
 

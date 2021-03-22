@@ -5,7 +5,7 @@ import org.bouncycastle.cert.jcajce.JcaCRLStore;
 import org.bouncycastle.cert.jcajce.JcaCertStore;
 import org.bouncycastle.cms.*;
 import org.bouncycastle.util.Store;
-import pegasus.model.bean.exception.PKCS7EncodeException;
+import pegasus.model.exception.PKCS7EncodeException;
 import sun.security.pkcs.PKCS7;
 
 import java.io.ByteArrayInputStream;

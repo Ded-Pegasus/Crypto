@@ -6,7 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import pegasus.model.asn1.ExecuteEvent;
-import pegasus.model.bean.exception.ASN1ExceptionParse;
+import pegasus.model.exception.ASN1ExceptionParse;
 
 import java.net.URL;
 import java.util.ResourceBundle;

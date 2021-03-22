@@ -1,4 +1,4 @@
-package pegasus.model.bean.exception;
+package pegasus.model.exception;
 
 public class PKCS7EncodeException extends Exception {
     private final int number = 3381;
