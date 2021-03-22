@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -22,37 +23,43 @@ public class SignController {
     private AnchorPane XmlSign;
 
     @FXML
-    private Button chooseCertificate;
+    private Button chooseXml;
 
     @FXML
     private Text directoryXml;
 
     @FXML
-    private Button execute;
+    private Button sign;
 
     @FXML
-    private Button chooseP7b;
+    private Button chooseKeyStore;
 
     @FXML
-    private Text directoryP7b;
+    private Text directoryKeyStore;
 
     @FXML
-    private RadioButton Enveloping;
+    private RadioButton enveloping;
 
     @FXML
     private ToggleGroup method;
 
     @FXML
-    private RadioButton Enveloped;
+    private RadioButton enveloped;
 
     @FXML
     private Text message;
 
     @FXML
-    private RadioButton Detached;
+    private RadioButton detached;
 
     @FXML
     private ToggleGroup method1;
+
+    @FXML
+    private ChoiceBox<?> digestMethod;
+
+    @FXML
+    private ChoiceBox<?> signatureMethod;
 
     @FXML
     void decodeAction(ActionEvent event) {

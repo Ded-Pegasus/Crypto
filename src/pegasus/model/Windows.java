@@ -5,6 +5,7 @@ public class Windows {
     private static final String p7b = "/pegasus/view/p7b.fxml";
     private static final String asn1 = "/pegasus/view/Asn1.fxml";
     private static final String sign = "/pegasus/view/Sign.fxml";
+    private static final String verify = "/pegasus/view/Verify.fxml";
 
     public static String getBase64() {
         return base64;
@@ -19,4 +20,6 @@ public class Windows {
     }
 
     public static String getSign(){ return sign; }
+
+    public static String getVerify(){ return verify; }
 }

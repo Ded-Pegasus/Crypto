@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="XmlSign" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="726.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.VerifyController">
+   <children>
+      <ToolBar layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="chooseCertificate" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryXml" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="369.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="503.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Xml" wrappingWidth="53.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="verify" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8;" text="Verify" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <ToolBar layoutX="14.0" layoutY="79.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="chooseP7b" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryPublicKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="364.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="503.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PublicKey" wrappingWidth="120.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="14.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" wrappingWidth="152.0">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <Text fx:id="result" layoutX="14.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="697.341796875">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

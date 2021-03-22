@@ -57,7 +57,7 @@ public class MenuController {
         });
 
         Verify.setOnAction(event -> {
-            loadFxml(Windows.getAsn1());
+            loadFxml(Windows.getVerify());
         });
     }
 
