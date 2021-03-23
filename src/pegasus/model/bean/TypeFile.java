@@ -1,4 +1,4 @@
-package pegasus.model.p7b.bean;
+package pegasus.model.bean;
 
 public enum TypeFile {
     cer,
@@ -6,5 +6,7 @@ public enum TypeFile {
     crl,
     acr,
     p7b,
-    certificates
+    certificates,
+    xml,
+    key
 }

@@ -5,21 +5,28 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
+import org.bouncycastle.openssl.PEMWriter;
+import org.bouncycastle.openssl.PKCS8Generator;
+import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
 import pegasus.model.base64.ConvertBase64ToObject;
 import pegasus.model.exception.AttributeCertificateDecodeException;
 import pegasus.model.exception.CRLsDecodeException;
 import pegasus.model.exception.CertificateDecodeException;
-import pegasus.model.p7b.bean.TypeFile;
+import pegasus.model.bean.TypeFile;
 import sun.security.pkcs.PKCS7;
 
 import javax.naming.InvalidNameException;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.security.cert.X509CRL;
 import java.security.cert.X509Certificate;
+import java.security.interfaces.DSAPrivateKey;
+import java.security.interfaces.ECPrivateKey;
+import java.security.interfaces.RSAPrivateKey;
+import java.util.Base64;
 import java.util.List;
 
 public class SaveObject extends FileUtils {
@@ -79,10 +86,18 @@ public class SaveObject extends FileUtils {
                     new FileChooser.ExtensionFilter("Crls, Certificates",
                             "*.crl", "*.cer", "*.pem", "*.der")
             );
-        } else if (typeFile.equals(TypeFile.p7b)){
+        } else if (typeFile.equals(TypeFile.p7b)) {
             fileChooser.getExtensionFilters().addAll(
                     new FileChooser.ExtensionFilter("PKCS#7",
                             "*.p7b"));
+        } else if (typeFile.equals(TypeFile.xml)) {
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("xml files",
+                            "*xml"));
+        } else if (typeFile.equals(TypeFile.key)) {
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("key file",
+                            "*.*"));
         }
         return fileChooser.showOpenDialog(stage);
     }
@@ -115,6 +130,20 @@ public class SaveObject extends FileUtils {
         FileOutputStream fos = new FileOutputStream(directory + "\\" + name + ".p7b");
         p7b.encodeSignedData(fos);
         fos.close();
+    }
+
+    public static void savePublicKey(String path, PublicKey publicKey) throws IOException {
+        FileUtils.saveKey(path, "PublicKey", publicKey.getEncoded());
+    }
+
+    public static void savePrivateKey(String path, PrivateKey privateKey) throws IOException {
+        if (privateKey instanceof RSAPrivateKey) {
+            FileUtils.saveKey(path, "RSAPrivateKey", privateKey.getEncoded());
+        } else if (privateKey instanceof DSAPrivateKey) {
+            FileUtils.saveKey(path, "DSAPrivateKey", privateKey.getEncoded());
+        } else if (privateKey instanceof ECPrivateKey) {
+            FileUtils.saveKey(path, "ECPrivateKey", privateKey.getEncoded());
+        }
     }
 
 }

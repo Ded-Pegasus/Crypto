@@ -3,7 +3,7 @@ package pegasus.model.p7b;
 import javafx.scene.text.Text;
 import pegasus.model.base64.bean.CodeFlag;
 import pegasus.model.exception.PKCS7EncodeException;
-import pegasus.model.p7b.bean.TypeFile;
+import pegasus.model.bean.TypeFile;
 import pegasus.model.p7b.encode.EncodeToP7b;
 import pegasus.model.scan.ReadObjectForDirectory;
 import pegasus.model.scan.ReadObjectsForDirectory;

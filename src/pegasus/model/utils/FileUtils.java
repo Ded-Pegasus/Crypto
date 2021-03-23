@@ -5,10 +5,7 @@ import org.bouncycastle.openssl.PEMWriter;
 import javax.naming.InvalidNameException;
 import javax.naming.ldap.LdapName;
 import javax.naming.ldap.Rdn;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 
 public abstract class FileUtils {
 
@@ -62,5 +59,24 @@ public abstract class FileUtils {
             }
         }
         return decodeString.toString();
+    }
+
+    public static void saveKey(String directory, String name, byte[] key) throws IOException {
+        DataOutputStream dos = null;
+        try {
+            dos = new DataOutputStream(new FileOutputStream(directory
+                    + name));
+            dos.write(key);
+            dos.flush();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (dos != null)
+                try {
+                    dos.close();
+                } catch (IOException e) {
+                    throw new IOException(e);
+                }
+        }
     }
 }

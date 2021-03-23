@@ -37,5 +37,10 @@
             <Font size="22.0" />
          </font>
       </Button>
+      <Button fx:id="generate" layoutX="484.0" layoutY="526.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="152.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3;" text="Generate" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

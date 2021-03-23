@@ -10,7 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pegasus.model.base64.bean.CodeFlag;
 import pegasus.model.p7b.ExecuteEvent;
-import pegasus.model.p7b.bean.TypeFile;
+import pegasus.model.bean.TypeFile;
 import pegasus.model.utils.SaveObject;
 
 import java.io.File;

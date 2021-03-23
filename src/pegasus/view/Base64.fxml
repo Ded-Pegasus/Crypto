@@ -12,7 +12,7 @@
 <AnchorPane fx:id="Base64" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="639.0" prefWidth="919.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.Base64Controller">
    <children>
       <TextArea fx:id="text" layoutX="14.0" layoutY="87.0" prefHeight="547.0" prefWidth="817.0" style="-fx-background-color: #708090;" />
-      <Button fx:id="executeButton" layoutX="836.0" layoutY="87.0" mnemonicParsing="false" prefHeight="547.0" prefWidth="69.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3; -fx-border-radius: 3;" text="Execute" textFill="WHITE" />
+      <Button fx:id="executeButton" layoutX="836.0" layoutY="87.0" mnemonicParsing="false" prefHeight="547.0" prefWidth="69.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-width: 3; -fx-border-radius: 3; -fx-background-radius: 3;" text="Execute" textFill="WHITE" />
     <Button fx:id="addDirectory" layoutX="531.0" layoutY="24.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
          <font>
             <Font size="14.0" />

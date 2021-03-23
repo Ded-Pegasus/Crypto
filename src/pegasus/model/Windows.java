@@ -6,6 +6,8 @@ public class Windows {
     private static final String asn1 = "/pegasus/view/Asn1.fxml";
     private static final String sign = "/pegasus/view/Sign.fxml";
     private static final String verify = "/pegasus/view/Verify.fxml";
+    private static final String generateKeyPair = "/pegasus/view/GenerateKey.fxml";
+    private static final String errorMessage = "/pegasus/view/ErrorMessage.fxml";
 
     public static String getBase64() {
         return base64;
@@ -22,4 +24,8 @@ public class Windows {
     public static String getSign(){ return sign; }
 
     public static String getVerify(){ return verify; }
+
+    public static String getErrorMessage(){ return errorMessage; }
+
+    public static String getGenerateKeyPair(){ return generateKeyPair; }
 }

@@ -2,7 +2,7 @@ package pegasus.model.scan;
 
 import org.apache.commons.io.IOUtils;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
-import pegasus.model.p7b.bean.TypeFile;
+import pegasus.model.bean.TypeFile;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

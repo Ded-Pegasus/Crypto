@@ -9,52 +9,52 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="XmlSign" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="726.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.SignController">
+<AnchorPane fx:id="XmlSign" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="790.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.SignController">
    <children>
-      <ToolBar layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+      <ToolBar layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="640.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
             <Button fx:id="chooseXml" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="directoryXml" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="369.13671875">
+            <Text fx:id="directoryXml" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="531.13671875">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
          </items>
       </ToolBar>
-      <Text fill="WHITE" layoutX="503.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Xml" wrappingWidth="53.13671875">
+      <Text fill="WHITE" layoutX="660.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Xml" wrappingWidth="53.13671875">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="sign" layoutX="17.0" layoutY="405.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8;" text="Sign" textFill="#8d0a0a">
+      <Button fx:id="sign" layoutX="14.0" layoutY="519.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Sign" textFill="#8d0a0a">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
-      <ToolBar layoutX="14.0" layoutY="338.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+      <ToolBar layoutX="14.0" layoutY="354.0" prefHeight="40.0" prefWidth="634.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
-            <Button fx:id="chooseKeyStore" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+            <Button fx:id="choosePublicKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="directoryKeyStore" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="364.13671875">
+            <Text fx:id="directoryPublicKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="523.13671875">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
          </items>
       </ToolBar>
-      <Text fill="WHITE" layoutX="498.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KeyStore" wrappingWidth="115.13671875">
+      <Text fill="WHITE" layoutX="652.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PrivateKey" wrappingWidth="125.0">
          <font>
             <Font size="27.0" />
          </font>
       </Text>
-      <RadioButton fx:id="enveloping" layoutX="157.0" layoutY="125.0" mnemonicParsing="false" onAction="#decodeAction" text="Enveloping  " textFill="#b50f0f">
+      <RadioButton fx:id="enveloping" layoutX="157.0" layoutY="141.0" mnemonicParsing="false" text="Enveloping  " textFill="#b50f0f">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,7 +62,7 @@
             <ToggleGroup fx:id="method" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="enveloped" layoutX="14.0" layoutY="125.0" mnemonicParsing="false" onAction="#encodeAction" text="Enveloped  " textFill="#ae1010" toggleGroup="$method">
+      <RadioButton fx:id="enveloped" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" text="Enveloped  " textFill="#ae1010" toggleGroup="$method">
          <font>
             <Font size="18.0" />
          </font>
@@ -72,30 +72,46 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text fill="#f2f2f2" layoutX="14.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enveloped Signature" wrappingWidth="292.0546875">
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enveloped Signature" wrappingWidth="292.0546875">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <RadioButton fx:id="detached" layoutX="305.0" layoutY="125.0" mnemonicParsing="false" onAction="#decodeAction" text="Detached " textFill="#b50f0f">
+      <RadioButton fx:id="detached" layoutX="305.0" layoutY="141.0" mnemonicParsing="false" text="Detached " textFill="#b50f0f" toggleGroup="$method">
          <font>
             <Font size="18.0" />
          </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="method1" />
-         </toggleGroup>
       </RadioButton>
-      <Text fill="#f2f2f2" layoutX="14.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DigestMethod ">
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DigestMethod ">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="digestMethod" layoutX="14.0" layoutY="215.0" prefHeight="27.0" prefWidth="277.0" />
-      <Text fill="#f2f2f2" layoutX="14.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SignatureMethod ">
+      <ChoiceBox fx:id="digestMethod" layoutX="14.0" layoutY="231.0" prefHeight="27.0" prefWidth="277.0" />
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SignatureMethod ">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="signatureMethod" layoutX="14.0" layoutY="297.0" prefHeight="27.0" prefWidth="277.0" />
+      <ChoiceBox fx:id="signatureMethod" layoutX="14.0" layoutY="313.0" prefHeight="27.0" prefWidth="277.0" />
+      <ToolBar layoutX="14.0" layoutY="427.0" prefHeight="40.0" prefWidth="634.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="choosePrivateKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryPrivateKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="525.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="651.0" layoutY="457.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PublicKey" wrappingWidth="125.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

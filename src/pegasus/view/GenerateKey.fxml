@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="GenerateKeyPair" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="739.0" style="-fx-background-color: #161a1e;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pegasus.controller.GenerateKeyPairController">
+   <children>
+      <ToolBar layoutX="25.0" layoutY="46.0" prefHeight="40.0" prefWidth="640.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="choosePublicKeyDirectory" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryPublicKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="531.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="24.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Public key" wrappingWidth="129.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Button fx:id="generate" layoutX="365.0" layoutY="285.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="149.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Generate" textFill="#8d0a0a">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Button>
+      <ToolBar layoutX="25.0" layoutY="173.0" prefHeight="40.0" prefWidth="640.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
+         <items>
+            <Button fx:id="choosePrivateKeyDirectory" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="directoryPrivateKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="530.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </items>
+      </ToolBar>
+      <Text fill="WHITE" layoutX="25.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Private key" wrappingWidth="149.0">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fx:id="message" fill="WHITE" layoutX="345.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="369.13671875">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#f2f2f2" layoutX="27.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Encryption algorithm" wrappingWidth="293.2509765625">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="encryptionAlgorithm" layoutX="25.0" layoutY="303.0" prefHeight="27.0" prefWidth="277.0" />
+   </children>
+</AnchorPane>

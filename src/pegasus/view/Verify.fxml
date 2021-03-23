@@ -27,7 +27,7 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="verify" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8;" text="Verify" textFill="#8d0a0a">
+      <Button fx:id="verify" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Verify" textFill="#8d0a0a">
          <font>
             <Font size="22.0" />
          </font>

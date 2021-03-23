@@ -1,16 +1,12 @@
 package pegasus.controller;
 
-import java.io.IOException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import pegasus.model.LoaderWindow;
+import pegasus.model.Windows;
+
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import pegasus.model.Windows;
 
 public class MenuController {
 
@@ -35,49 +31,36 @@ public class MenuController {
     @FXML
     private Button Verify;
 
-
+    @FXML
+    private Button generate;
 
     @FXML
     void initialize() {
 
+        LoaderWindow loaderWindow = new LoaderWindow();
+
         Base64Button.setOnAction(event -> {
-            loadFxml(Windows.getBase64());
+            loaderWindow.loadFxml(Windows.getBase64());
         });
 
         P7bButton.setOnAction(event -> {
-            loadFxml(Windows.getP7b());
+            loaderWindow.loadFxml(Windows.getP7b());
         });
 
         ASN1Button.setOnAction(event -> {
-            loadFxml(Windows.getAsn1());
+            loaderWindow.loadFxml(Windows.getAsn1());
         });
 
         Sign.setOnAction(event -> {
-            loadFxml(Windows.getSign());
+            loaderWindow.loadFxml(Windows.getSign());
         });
 
         Verify.setOnAction(event -> {
-            loadFxml(Windows.getVerify());
+            loaderWindow.loadFxml(Windows.getVerify());
+        });
+
+        generate.setOnAction(event -> {
+            loaderWindow.loadFxml(Windows.getGenerateKeyPair());
         });
     }
-
-    private void loadFxml(String pathToFxml) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource(pathToFxml));
-
-        try {
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-
-        stage.initModality(Modality.APPLICATION_MODAL);
-
-        stage.showAndWait();
-    }
-
 }

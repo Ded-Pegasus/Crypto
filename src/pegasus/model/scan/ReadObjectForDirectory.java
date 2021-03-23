@@ -3,10 +3,16 @@ package pegasus.model.scan;
 import org.apache.commons.io.IOUtils;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
 import org.bouncycastle.jce.provider.X509CRLObject;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 import sun.security.pkcs.PKCS7;
 import sun.security.x509.X509CRLImpl;
 import sun.security.x509.X509CertImpl;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.dom.DOMSource;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
