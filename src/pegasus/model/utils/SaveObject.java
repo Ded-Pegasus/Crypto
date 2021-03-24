@@ -8,6 +8,8 @@ import org.bouncycastle.cert.X509AttributeCertificateHolder;
 import org.bouncycastle.openssl.PEMWriter;
 import org.bouncycastle.openssl.PKCS8Generator;
 import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import pegasus.model.base64.ConvertBase64ToObject;
 import pegasus.model.exception.AttributeCertificateDecodeException;
 import pegasus.model.exception.CRLsDecodeException;
@@ -16,6 +18,12 @@ import pegasus.model.bean.TypeFile;
 import sun.security.pkcs.PKCS7;
 
 import javax.naming.InvalidNameException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -23,10 +31,7 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.X509CRL;
 import java.security.cert.X509Certificate;
-import java.security.interfaces.DSAPrivateKey;
-import java.security.interfaces.ECPrivateKey;
-import java.security.interfaces.RSAPrivateKey;
-import java.util.Base64;
+import java.security.interfaces.*;
 import java.util.List;
 
 public class SaveObject extends FileUtils {
@@ -133,7 +138,11 @@ public class SaveObject extends FileUtils {
     }
 
     public static void savePublicKey(String path, PublicKey publicKey) throws IOException {
-        FileUtils.saveKey(path, "PublicKey", publicKey.getEncoded());
+        if (publicKey instanceof RSAPublicKey) {
+            FileUtils.saveKey(path, "RSAPublicKey", publicKey.getEncoded());
+        } else if (publicKey instanceof DSAPublicKey) {
+            FileUtils.saveKey(path, "DSAPrivateKey", publicKey.getEncoded());
+        }
     }
 
     public static void savePrivateKey(String path, PrivateKey privateKey) throws IOException {
@@ -144,6 +153,14 @@ public class SaveObject extends FileUtils {
         } else if (privateKey instanceof ECPrivateKey) {
             FileUtils.saveKey(path, "ECPrivateKey", privateKey.getEncoded());
         }
+    }
+
+    public static void saveXml(Document document, String directory, String name) throws TransformerException, FileNotFoundException {
+        String saveDirectory = directory.substring(0, directory.lastIndexOf("\\"));
+        FileOutputStream os = new FileOutputStream(saveDirectory + "\\" + name + ".xml");
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer trans = tf.newTransformer();
+        trans.transform(new DOMSource(document), new StreamResult(os));
     }
 
 }

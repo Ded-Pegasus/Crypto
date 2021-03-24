@@ -1,7 +1,9 @@
 package pegasus.model.generate;
 
 import oracle.security.crypto.core.RSAPrivateKey;
+import org.apache.commons.io.FileUtils;
 import pegasus.model.utils.SaveObject;
+import sun.security.provider.DSAPrivateKey;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,11 +16,15 @@ public class Generate {
         keyPairGenerator.initialize(2048);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-//        File file = new File("D:\\rsaPrivateKey");
+//        File file = new File("D:\\RSAPrivateKey");
 //        PrivateKey privateKey1 = new RSAPrivateKey(file);
+
+//        File file = new File("D:\\DSAPrivateKey");
+//        PrivateKey privateKey1 = new DSAPrivateKey(file);
 
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
+
 
         SaveObject.savePrivateKey(pathPrivateKey, privateKey);
         SaveObject.savePublicKey(pathPublicKey, publicKey);

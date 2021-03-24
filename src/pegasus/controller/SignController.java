@@ -16,6 +16,8 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import pegasus.model.bean.TypeFile;
 import pegasus.model.bean.ConvertFile;
+import pegasus.model.exception.KeyException;
+import pegasus.model.exception.SaveObjectException;
 import pegasus.model.sign.Sign;
 import pegasus.model.utils.SaveObject;
 
@@ -74,6 +76,7 @@ public class SignController {
         //default value
         digestMethod.setValue("SHA1");
         signatureMethod.setValue("DSA_SHA1");
+        method.selectToggle(enveloped);
         //default value
         ObservableList<String> listDigestMethod = digestMethod.getItems();
         listDigestMethod.add("SHA1");
@@ -97,6 +100,7 @@ public class SignController {
                 Document document = ConvertFile.readDocument(file);
                 signOperation.setDocument(document);
                 directoryXml.setText(file.getAbsolutePath());
+                signOperation.setXmlFilePath(file.getAbsolutePath());
             } catch (IOException | ParserConfigurationException | SAXException e) {
                 message.setText("Couldn't read xml file");
                 e.printStackTrace();
@@ -122,8 +126,12 @@ public class SignController {
             signOperation.setSelectedSignature(signatureMethod.getValue());
             RadioButton button = (RadioButton) method.getSelectedToggle();
             signOperation.setTransform(button.getText());
-
-
+            try {
+                signOperation.signXml();
+            } catch (KeyException | java.security.KeyException | SaveObjectException e) {
+                message.setText(e.getMessage());
+                e.printStackTrace();
+            }
         });
 
     }

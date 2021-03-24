@@ -2,18 +2,25 @@ package pegasus.model.sign;
 
 import org.w3c.dom.Document;
 import pegasus.model.bean.ConvertFile;
-import pegasus.model.exception.KeyStoreInitException;
+import pegasus.model.exception.KeyException;
+import pegasus.model.exception.SaveObjectException;
+import pegasus.model.utils.SaveObject;
 
 import javax.xml.crypto.MarshalException;
 import javax.xml.crypto.dsig.*;
 import javax.xml.crypto.dsig.dom.DOMSignContext;
 import javax.xml.crypto.dsig.keyinfo.KeyInfo;
+import javax.xml.crypto.dsig.keyinfo.KeyInfoFactory;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
 import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
+import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.IOException;
-import java.security.*;
-import java.security.cert.CertificateException;
+import java.io.FileNotFoundException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.util.Collections;
 
 public class Sign {
@@ -82,12 +89,11 @@ public class Sign {
         this.transform = transform;
     }
 
-    public void generateXMLDigitalSignature() throws KeyStoreInitException, IOException, KeyException {
+    public void signXml() throws KeyException, java.security.KeyException, SaveObjectException {
 
-
-        //Create XML Signature Factory
         XMLSignatureFactory xmlSigFactory = XMLSignatureFactory.getInstance("DOM");
-        PrivateKey privateKey = ConvertFile.convertToPrivateKey(this.privateKey, selectedDigestMethod);
+        PrivateKey privateKey = ConvertFile.convertToPrivateKey(this.privateKey, selectedSignature);
+        PublicKey publicKey = ConvertFile.convertFileToPublicKey(this.publicKey, selectedSignature);
         DOMSignContext domSignCtx = new DOMSignContext(privateKey, document.getDocumentElement());
         Reference ref = null;
         SignedInfo signedInfo = null;
@@ -100,24 +106,28 @@ public class Sign {
                             (C14NMethodParameterSpec) null),
                     xmlSigFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
                     Collections.singletonList(ref));
-        } catch (NoSuchAlgorithmException ex) {
-            ex.printStackTrace();
-        } catch (InvalidAlgorithmParameterException ex) {
+        } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException ex) {
             ex.printStackTrace();
         }
-        //Pass the Public Key File Path
-        KeyInfo keyInfo = getKeyInfo(xmlSigFactory, publicKeyFilePath);
-        //Create a new XML Signature
+        XMLSignatureFactory fac = XMLSignatureFactory.getInstance("DOM");
+        KeyInfoFactory kif = fac.getKeyInfoFactory();
+        KeyValue kv = kif.newKeyValue(publicKey);
+        KeyInfo keyInfo = kif.newKeyInfo(Collections.singletonList(kv));
         XMLSignature xmlSignature = xmlSigFactory.newXMLSignature(signedInfo, keyInfo);
         try {
-        //Sign the document
+            //Sign the document
             xmlSignature.sign(domSignCtx);
         } catch (MarshalException ex) {
             ex.printStackTrace();
         } catch (XMLSignatureException ex) {
             ex.printStackTrace();
         }
-        //Store the digitally signed document inta a location
-//        storeSignedDoc(document, destnSignedXmlFilePath);
+
+        try {
+            SaveObject.saveXml(document, xmlFilePath, "SignedXml");
+        } catch (TransformerException | FileNotFoundException e) {
+            e.printStackTrace();
+            throw new SaveObjectException("signed xml not save " + e.getMessage());
+        }
     }
 }

@@ -37,12 +37,12 @@
       </Button>
       <ToolBar layoutX="14.0" layoutY="354.0" prefHeight="40.0" prefWidth="634.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
-            <Button fx:id="choosePublicKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+            <Button fx:id="choosePrivateKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="directoryPublicKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="523.13671875">
+            <Text fx:id="directoryPrivateKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="523.13671875">
                <font>
                   <Font size="20.0" />
                </font>
@@ -96,12 +96,12 @@
       <ChoiceBox fx:id="signatureMethod" layoutX="14.0" layoutY="313.0" prefHeight="27.0" prefWidth="277.0" />
       <ToolBar layoutX="14.0" layoutY="427.0" prefHeight="40.0" prefWidth="634.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
-            <Button fx:id="choosePrivateKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+            <Button fx:id="choosePublicKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Text fx:id="directoryPrivateKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="525.13671875">
+            <Text fx:id="directoryPublicKey" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="C:/" wrappingWidth="525.13671875">
                <font>
                   <Font size="20.0" />
                </font>
