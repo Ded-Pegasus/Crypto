@@ -40,27 +40,27 @@ public class MenuController {
         LoaderWindow loaderWindow = new LoaderWindow();
 
         Base64Button.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getBase64());
+            loaderWindow.loadFxml(Windows.base64);
         });
 
         P7bButton.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getP7b());
+            loaderWindow.loadFxml(Windows.p7b);
         });
 
         ASN1Button.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getAsn1());
+            loaderWindow.loadFxml(Windows.asn1);
         });
 
         Sign.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getSign());
+            loaderWindow.loadFxml(Windows.sign);
         });
 
         Verify.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getVerify());
+            loaderWindow.loadFxml(Windows.verify);
         });
 
         generate.setOnAction(event -> {
-            loaderWindow.loadFxml(Windows.getGenerateKeyPair());
+            loaderWindow.loadFxml(Windows.generateKeyPair);
         });
     }
 }

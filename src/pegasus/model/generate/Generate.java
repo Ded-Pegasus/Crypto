@@ -13,7 +13,7 @@ public class Generate {
 
     public static void generateKeyPair(String pathPublicKey, String pathPrivateKey, String algorithm) throws NoSuchAlgorithmException, IOException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(algorithm);
-        keyPairGenerator.initialize(2048);
+        keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
 //        File file = new File("D:\\RSAPrivateKey");

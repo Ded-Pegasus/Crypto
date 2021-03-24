@@ -1,4 +1,4 @@
-package pegasus.model.sign;
+package pegasus.model.xml_dsig;
 
 import org.w3c.dom.Document;
 import pegasus.model.bean.ConvertFile;
@@ -16,7 +16,7 @@ import javax.xml.crypto.dsig.spec.C14NMethodParameterSpec;
 import javax.xml.crypto.dsig.spec.TransformParameterSpec;
 import javax.xml.transform.TransformerException;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
@@ -92,19 +92,22 @@ public class Sign {
     public void signXml() throws KeyException, java.security.KeyException, SaveObjectException {
 
         XMLSignatureFactory xmlSigFactory = XMLSignatureFactory.getInstance("DOM");
-        PrivateKey privateKey = ConvertFile.convertToPrivateKey(this.privateKey, selectedSignature);
+        PrivateKey privateKey = ConvertFile.convertFileToPrivateKey(this.privateKey, selectedSignature);
         PublicKey publicKey = ConvertFile.convertFileToPublicKey(this.publicKey, selectedSignature);
         DOMSignContext domSignCtx = new DOMSignContext(privateKey, document.getDocumentElement());
+
         Reference ref = null;
         SignedInfo signedInfo = null;
         try {
-            ref = xmlSigFactory.newReference("", xmlSigFactory.newDigestMethod(DigestMethod.SHA1, null),
+            ref = xmlSigFactory.newReference("", xmlSigFactory.newDigestMethod(
+                    SearchAlgorithms.searchDigestAlgorithm(selectedDigestMethod), null),
                     Collections.singletonList(xmlSigFactory.newTransform(Transform.ENVELOPED,
                             (TransformParameterSpec) null)), null, null);
             signedInfo = xmlSigFactory.newSignedInfo(
                     xmlSigFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE,
                             (C14NMethodParameterSpec) null),
-                    xmlSigFactory.newSignatureMethod(SignatureMethod.RSA_SHA1, null),
+                    xmlSigFactory.newSignatureMethod(
+                            SearchAlgorithms.searchSignatureMethod(selectedSignature), null),
                     Collections.singletonList(ref));
         } catch (NoSuchAlgorithmException | InvalidAlgorithmParameterException ex) {
             ex.printStackTrace();
@@ -125,7 +128,7 @@ public class Sign {
 
         try {
             SaveObject.saveXml(document, xmlFilePath, "SignedXml");
-        } catch (TransformerException | FileNotFoundException e) {
+        } catch (TransformerException | IOException e) {
             e.printStackTrace();
             throw new SaveObjectException("signed xml not save " + e.getMessage());
         }

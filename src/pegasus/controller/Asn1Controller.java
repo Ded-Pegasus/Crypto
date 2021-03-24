@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import pegasus.model.ErrorMessage;
+import pegasus.model.LoaderWindow;
+import pegasus.model.Windows;
 import pegasus.model.asn1.ExecuteEvent;
 import pegasus.model.exception.ASN1ExceptionParse;
 
@@ -53,12 +56,12 @@ public class Asn1Controller {
                 decodeAsn1 = ExecuteEvent.textToAsn1(text);
             } catch (NullPointerException e) {
                 System.out.println(ANSI_RED + "TextArea is null");
-                asn1.setText("TextArea is null");
-                e.printStackTrace();
+                ErrorMessage.message("TextArea is null");
+                //e.printStackTrace();
             } catch (ASN1ExceptionParse asn1ExceptionParse) {
-                asn1.setText("Couldn't read ASN.1 structure");
                 System.out.println(ANSI_RED + "Couldn't read ASN.1 structure");
-                asn1ExceptionParse.printStackTrace();
+                ErrorMessage.message("Couldn't read ASN.1 structure");
+                //asn1ExceptionParse.printStackTrace();
             }
             asn1.setText(decodeAsn1);
         });

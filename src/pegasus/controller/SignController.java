@@ -2,9 +2,6 @@ package pegasus.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.security.PrivateKey;
-import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,11 +11,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
+import pegasus.model.ErrorMessage;
 import pegasus.model.bean.TypeFile;
 import pegasus.model.bean.ConvertFile;
 import pegasus.model.exception.KeyException;
 import pegasus.model.exception.SaveObjectException;
-import pegasus.model.sign.Sign;
+import pegasus.model.xml_dsig.Sign;
 import pegasus.model.utils.SaveObject;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -102,6 +100,7 @@ public class SignController {
                 directoryXml.setText(file.getAbsolutePath());
                 signOperation.setXmlFilePath(file.getAbsolutePath());
             } catch (IOException | ParserConfigurationException | SAXException e) {
+                ErrorMessage.message(e.getMessage());
                 message.setText("Couldn't read xml file");
                 e.printStackTrace();
             }
@@ -128,7 +127,9 @@ public class SignController {
             signOperation.setTransform(button.getText());
             try {
                 signOperation.signXml();
+                message.setText("Success");
             } catch (KeyException | java.security.KeyException | SaveObjectException e) {
+                ErrorMessage.message(e.getMessage());
                 message.setText(e.getMessage());
                 e.printStackTrace();
             }

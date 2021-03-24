@@ -1,6 +1,9 @@
 package pegasus.model.p7b;
 
 import javafx.scene.text.Text;
+import pegasus.model.ErrorMessage;
+import pegasus.model.LoaderWindow;
+import pegasus.model.Windows;
 import pegasus.model.base64.bean.CodeFlag;
 import pegasus.model.exception.PKCS7EncodeException;
 import pegasus.model.bean.TypeFile;
@@ -36,11 +39,13 @@ public class ExecuteEvent {
                 SaveObject.saveP7b(pkcs7, directoryP7b.getText(), "p7b");
                 message.setText("PKCS7 file generate and saved success");
             } catch (IOException e) {
+                ErrorMessage.message(e.getMessage());
                 message.setText("Couldn't save p7b file");
                 e.printStackTrace();
             } catch (NullPointerException e) {
+                ErrorMessage.message(e.getMessage());
                 message.setText("List certificates or crls is null");
-                e.printStackTrace();
+                //e.printStackTrace();
             }
         }  else if (codeFlag == CodeFlag.Decode) {
             try {
@@ -56,7 +61,8 @@ public class ExecuteEvent {
                 message.setText("Decode p7b and save files success");
             } catch (IOException | InvalidNameException e) {
                 message.setText("Couldn't read p7b file or save files from p7b");
-                e.printStackTrace();
+                ErrorMessage.message(e.getMessage());
+                //e.printStackTrace();
             }
         }
     }

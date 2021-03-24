@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,7 +11,7 @@
    <children>
       <ToolBar layoutX="14.0" layoutY="28.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
-            <Button fx:id="chooseCertificate" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+            <Button fx:id="chooseXml" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -27,14 +28,14 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Button fx:id="verify" layoutX="14.0" layoutY="141.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Verify" textFill="#8d0a0a">
+      <Button fx:id="verify" layoutX="14.0" layoutY="219.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="143.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000; -fx-border-radius: 8; -fx-background-radius: 8;" text="Verify" textFill="#8d0a0a">
          <font>
             <Font size="22.0" />
          </font>
       </Button>
       <ToolBar layoutX="14.0" layoutY="79.0" prefHeight="40.0" prefWidth="480.0" style="-fx-background-color: #000000; -fx-border-color: #FF0000;">
          <items>
-            <Button fx:id="chooseP7b" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
+            <Button fx:id="choosePublicKey" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #708090;" text="Choose" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -51,15 +52,21 @@
             <Font size="27.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="14.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" wrappingWidth="152.0">
+      <Text fill="WHITE" layoutX="14.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Result" wrappingWidth="152.0">
          <font>
             <Font size="35.0" />
          </font>
       </Text>
-      <Text fx:id="result" layoutX="14.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="697.341796875">
+      <Text fx:id="result" fill="#dd4747" layoutX="14.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="697.341796875">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
+      <Text fill="#f2f2f2" layoutX="14.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Algorithm">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="algorithm" layoutX="14.0" layoutY="170.0" prefHeight="27.0" prefWidth="277.0" />
    </children>
 </AnchorPane>

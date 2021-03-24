@@ -6,6 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
+import pegasus.model.ErrorMessage;
+import pegasus.model.LoaderWindow;
+import pegasus.model.Windows;
 import pegasus.model.base64.bean.CreateFlag;
 import pegasus.model.base64.bean.CodeFlag;
 import pegasus.model.scan.ReadObjectForDirectory;
@@ -73,6 +76,7 @@ public class ExecuteEvent {
                     } else {
                         message.setText("Undefined file!");
                         System.out.println(ANSI_RED + "Undefined file!");
+                        ErrorMessage.message("Undefined file!");
                     }
                 }
             }
@@ -84,6 +88,7 @@ public class ExecuteEvent {
                     message.setText("Text encoded success");
                     text.setText(base64);
                 } catch (Exception e) {
+                    ErrorMessage.message(e.getMessage());
                     e.printStackTrace();
                 }
             } else if (button.getText().equals(CodeFlag.Decode.name())) {
@@ -93,6 +98,7 @@ public class ExecuteEvent {
                     message.setText("Text decoded success");
                     text.setText(decodeBase64);
                 } catch (Exception e) {
+                    ErrorMessage.message(e.getMessage());
                     e.printStackTrace();
                 }
             }

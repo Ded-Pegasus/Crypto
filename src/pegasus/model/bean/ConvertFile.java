@@ -44,7 +44,7 @@ public class ConvertFile {
         return factory.newDocumentBuilder();
     }
 
-    public static PrivateKey convertToPrivateKey(File file, String algorithm) throws
+    public static PrivateKey convertFileToPrivateKey(File file, String algorithm) throws
             pegasus.model.exception.KeyException {
         if (algorithm.contains("RSA")) {
             try {
@@ -79,20 +79,7 @@ public class ConvertFile {
             } else {
                 throw new KeyException("Undefined key algorithm");
             }
-
-//            KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
-//            FileInputStream pubKeyStream = new FileInputStream(file);
-//            int pubKeyLength = pubKeyStream.available();
-//            byte[] pubKeyBytes = new byte[pubKeyLength];
-//            pubKeyStream.read(pubKeyBytes);
-//            pubKeyStream.close();
-//            X509EncodedKeySpec pubKeySpec
-//                    = new X509EncodedKeySpec(pubKeyBytes);
-//            return keyFactory.generatePublic(pubKeySpec);
         }
-//        catch (NoSuchAlgorithmException e) {
-//            throw new KeyException("Undefined key algorithm");
-//        }
         catch (IOException  | InvalidKeyException e) {
             e.printStackTrace();
             throw new KeyException(e.getMessage());

@@ -64,7 +64,7 @@ public abstract class FileUtils {
     public static void saveKey(String directory, String name, byte[] key) throws IOException {
         DataOutputStream dos = null;
         try {
-            dos = new DataOutputStream(new FileOutputStream(directory
+            dos = new DataOutputStream(new FileOutputStream(directory + "\\"
                     + name));
             dos.write(key);
             dos.flush();

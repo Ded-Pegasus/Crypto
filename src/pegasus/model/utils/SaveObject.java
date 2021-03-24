@@ -5,26 +5,24 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
-import org.bouncycastle.openssl.PEMWriter;
-import org.bouncycastle.openssl.PKCS8Generator;
-import org.bouncycastle.openssl.jcajce.JcaPEMWriter;
 import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 import pegasus.model.base64.ConvertBase64ToObject;
+import pegasus.model.bean.TypeFile;
 import pegasus.model.exception.AttributeCertificateDecodeException;
 import pegasus.model.exception.CRLsDecodeException;
 import pegasus.model.exception.CertificateDecodeException;
-import pegasus.model.bean.TypeFile;
 import sun.security.pkcs.PKCS7;
 
 import javax.naming.InvalidNameException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.PrivateKey;
@@ -141,7 +139,7 @@ public class SaveObject extends FileUtils {
         if (publicKey instanceof RSAPublicKey) {
             FileUtils.saveKey(path, "RSAPublicKey", publicKey.getEncoded());
         } else if (publicKey instanceof DSAPublicKey) {
-            FileUtils.saveKey(path, "DSAPrivateKey", publicKey.getEncoded());
+            FileUtils.saveKey(path, "DSAPublicKey", publicKey.getEncoded());
         }
     }
 
@@ -155,12 +153,13 @@ public class SaveObject extends FileUtils {
         }
     }
 
-    public static void saveXml(Document document, String directory, String name) throws TransformerException, FileNotFoundException {
+    public static void saveXml(Document document, String directory, String name) throws TransformerException, IOException {
         String saveDirectory = directory.substring(0, directory.lastIndexOf("\\"));
         FileOutputStream os = new FileOutputStream(saveDirectory + "\\" + name + ".xml");
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer trans = tf.newTransformer();
         trans.transform(new DOMSource(document), new StreamResult(os));
+        os.close();
     }
 
 }

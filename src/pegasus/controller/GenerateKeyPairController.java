@@ -13,6 +13,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import pegasus.model.ErrorMessage;
+import pegasus.model.LoaderWindow;
+import pegasus.model.Windows;
 import pegasus.model.generate.Generate;
 import pegasus.model.utils.SaveObject;
 
@@ -89,6 +92,7 @@ public class GenerateKeyPairController {
                     message.setText("Choose directory");
                 }
             } catch (NoSuchAlgorithmException | IOException e) {
+                ErrorMessage.message(e.getMessage());
                 e.printStackTrace();
             }
         });
