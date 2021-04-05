@@ -11,10 +11,10 @@ import java.util.Base64;
 
 public class ExecuteEvent {
 
-    public static String textToAsn1(TextArea text) throws NullPointerException, ASN1ExceptionParse {
-        if (text != null) {
+    public static String textToAsn1(String textData) throws NullPointerException, ASN1ExceptionParse {
+        if (textData != null) {
             try {
-                String textData = text.getText();
+                textData = textData.replaceAll("\n", "");
                 byte[] decode = Base64.getDecoder().decode(textData);
                 ASN1InputStream bIn = new ASN1InputStream(new ByteArrayInputStream(decode));
                 ASN1Primitive obj = bIn.readObject();

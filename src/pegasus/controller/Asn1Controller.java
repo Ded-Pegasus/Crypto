@@ -53,7 +53,10 @@ public class Asn1Controller {
         executeButton.setOnAction(event ->{
             String decodeAsn1 = null;
             try {
-                decodeAsn1 = ExecuteEvent.textToAsn1(text);
+                String textData = text.getText();
+                textData = textData.replaceAll("\n", "");
+                text.setText(textData);
+                decodeAsn1 = ExecuteEvent.textToAsn1(textData);
             } catch (NullPointerException e) {
                 System.out.println(ANSI_RED + "TextArea is null");
                 ErrorMessage.message("TextArea is null");
