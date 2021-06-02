@@ -18,5 +18,8 @@
     <orderEntry type="library" name="bcmail-jdk15-1.46" level="project" />
     <orderEntry type="library" name="bcprov-jdk15-1.46" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.10" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.68" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcmail-jdk15:1.46" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15:1.46" level="project" />
   </component>
 </module>
