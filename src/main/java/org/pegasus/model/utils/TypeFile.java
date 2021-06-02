@@ -1,4 +1,4 @@
-package org.pegasus.model.bean;
+package org.pegasus.model.utils;
 
 public enum TypeFile {
     cer,

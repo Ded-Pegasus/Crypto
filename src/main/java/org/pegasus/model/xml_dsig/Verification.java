@@ -1,8 +1,10 @@
 package org.pegasus.model.xml_dsig;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import org.pegasus.model.bean.ConvertFile;
+import org.pegasus.model.utils.ConvertFile;
 
 import javax.xml.crypto.dsig.XMLSignature;
 import javax.xml.crypto.dsig.XMLSignatureFactory;
@@ -10,34 +12,12 @@ import javax.xml.crypto.dsig.dom.DOMValidateContext;
 import java.io.File;
 import java.security.PublicKey;
 
+@Getter
+@Setter
 public class Verification {
     private File publicKeyFile;
     private Document document;
     private String algorithm;
-
-    public File getPublicKeyFile() {
-        return publicKeyFile;
-    }
-
-    public void setPublicKeyFile(File publicKeyFile) {
-        this.publicKeyFile = publicKeyFile;
-    }
-
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
-    }
-
-    public String getAlgorithm() {
-        return algorithm;
-    }
-
-    public void setAlgorithm(String algorithm) {
-        this.algorithm = algorithm;
-    }
 
     public boolean verificationXmlSignature() throws Exception {
 

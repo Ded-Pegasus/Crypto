@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import org.pegasus.model.base64.bean.CreateFlag;
 import org.pegasus.model.base64.ExecuteEvent;
 import org.pegasus.model.base64.bean.CodeFlag;
-import org.pegasus.model.bean.TypeFile;
+import org.pegasus.model.utils.TypeFile;
 import org.pegasus.model.utils.SaveObject;
 
 import java.io.File;

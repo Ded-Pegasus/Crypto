@@ -12,12 +12,6 @@ public class Generate {
         keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
 
-//        File file = new File("D:\\RSAPrivateKey");
-//        PrivateKey privateKey1 = new RSAPrivateKey(file);
-
-//        File file = new File("D:\\DSAPrivateKey");
-//        PrivateKey privateKey1 = new DSAPrivateKey(file);
-
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
 

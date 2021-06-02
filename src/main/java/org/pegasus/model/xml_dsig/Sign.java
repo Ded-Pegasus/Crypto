@@ -1,8 +1,10 @@
 package org.pegasus.model.xml_dsig;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.pegasus.model.bean.ConvertFile;
+import org.pegasus.model.utils.ConvertFile;
 import org.pegasus.model.exception.KeyException;
 import org.pegasus.model.exception.SaveObjectException;
 import org.pegasus.model.utils.FileUtils;
@@ -29,6 +31,8 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.util.Collections;
 
+@Getter
+@Setter
 public class Sign {
 
     private Document document;
@@ -39,73 +43,18 @@ public class Sign {
     private File privateKey;
     private File publicKey;
 
-    public Document getDocument() {
-        return document;
-    }
-
-    public void setDocument(Document document) {
-        this.document = document;
-    }
-
-    public String getSelectedDigestMethod() {
-        return selectedDigestMethod;
-    }
-
-    public void setSelectedDigestMethod(String selectedDigestMethod) {
-        this.selectedDigestMethod = selectedDigestMethod;
-    }
-
-    public String getSelectedSignature() {
-        return selectedSignature;
-    }
-
-    public void setSelectedSignature(String selectedSignature) {
-        this.selectedSignature = selectedSignature;
-    }
-
-    public String getXmlFilePath() {
-        return xmlFilePath;
-    }
-
-    public void setXmlFilePath(String xmlFilePath) {
-        this.xmlFilePath = xmlFilePath;
-    }
-
-    public File getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(File privateKey) {
-        this.privateKey = privateKey;
-    }
-
-    public File getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(File publicKey) {
-        this.publicKey = publicKey;
-    }
-
-    public String getTransform() {
-        return transform;
-    }
-
-    public void setTransform(String transform) {
-        this.transform = transform;
-    }
-
     public void signXml() throws KeyException, java.security.KeyException, SaveObjectException {
 
         XMLSignatureFactory xmlSigFactory = XMLSignatureFactory.getInstance("DOM");
         PrivateKey privateKey = ConvertFile.convertFileToPrivateKey(this.privateKey, selectedSignature);
         PublicKey publicKey = ConvertFile.convertFileToPublicKey(this.publicKey, selectedSignature);
         DOMSignContext domSignCtx = null;
-        Document docToSign = null;
+        Document docToSave = null;
 
         Reference ref = null;
         SignedInfo signedInfo = null;
         XMLObject obj = null;
+
         try {
             switch (transform) {
                 case "Enveloped  ":
@@ -114,7 +63,7 @@ public class Sign {
                             Collections.singletonList(xmlSigFactory.newTransform(Transform.ENVELOPED,
                                     (TransformParameterSpec) null)), null, null);
                     domSignCtx = new DOMSignContext(privateKey, document.getDocumentElement());
-                    docToSign = document;
+                    docToSave = document;
                     break;
                 case "Enveloping  ": {
                     ref = xmlSigFactory.newReference("#object",
@@ -123,7 +72,7 @@ public class Sign {
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     dbf.setNamespaceAware(true);
                     Document doc = dbf.newDocumentBuilder().newDocument();
-                    docToSign = doc;
+                    docToSave = doc;
                     Node text = doc.createTextNode(FileUtils.documentToBase64(document));
                     XMLStructure content = new DOMStructure(text);
                     obj = xmlSigFactory.newXMLObject
@@ -138,7 +87,7 @@ public class Sign {
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     dbf.setNamespaceAware(true);
                     Document doc = dbf.newDocumentBuilder().newDocument();
-                    docToSign = doc;
+                    docToSave = doc;
                     domSignCtx = new DOMSignContext(privateKey, doc);
                     break;
                 }
@@ -174,7 +123,7 @@ public class Sign {
         }
 
         try {
-            SaveObject.saveXml(docToSign, xmlFilePath, "SignedXml" + transform);
+            SaveObject.saveXml(docToSave, xmlFilePath, "SignedXml" + transform);
         } catch (TransformerException | IOException e) {
             e.printStackTrace();
             throw new SaveObjectException("signed xml not save " + e.getMessage());

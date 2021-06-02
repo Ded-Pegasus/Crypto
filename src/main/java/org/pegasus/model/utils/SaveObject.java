@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import org.bouncycastle.cert.X509AttributeCertificateHolder;
 import org.w3c.dom.Document;
 import org.pegasus.model.base64.ConvertBase64ToObject;
-import org.pegasus.model.bean.TypeFile;
 import org.pegasus.model.exception.AttributeCertificateDecodeException;
 import org.pegasus.model.exception.CRLsDecodeException;
 import org.pegasus.model.exception.CertificateDecodeException;

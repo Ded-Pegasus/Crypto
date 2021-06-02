@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 import org.pegasus.model.ErrorMessage;
-import org.pegasus.model.bean.TypeFile;
+import org.pegasus.model.utils.TypeFile;
 import org.pegasus.model.utils.SaveObject;
 import org.pegasus.model.xml_dsig.Verification;
 
@@ -75,13 +75,6 @@ public class VerifyController {
                 DOMParser parser = new DOMParser();
                 parser.parse(file.getAbsolutePath());
                 Document document = parser.getDocument();
-//                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-//                DocumentBuilder builder = factory.newDocumentBuilder();
-//                byte[] bytes = FileUtils.readFileToByteArray(file);
-//                Document document2 = builder.parse(new InputSource(new ByteArrayInputStream(bytes)));
-//                Document document1 = builder.parse(new InputSource(new StringReader(file.getAbsolutePath())));
-//                Element rootElement = document1.getDocumentElement();
-//                Document document = ConvertFile.readDocument(file);
 
                 verification.setDocument(document);
                 directoryXml.setText(file.getAbsolutePath());

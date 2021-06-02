@@ -4,7 +4,7 @@ import javafx.scene.text.Text;
 import org.pegasus.model.ErrorMessage;
 import org.pegasus.model.base64.bean.CodeFlag;
 import org.pegasus.model.exception.PKCS7EncodeException;
-import org.pegasus.model.bean.TypeFile;
+import org.pegasus.model.utils.TypeFile;
 import org.pegasus.model.p7b.encode.EncodeToP7b;
 import org.pegasus.model.scan.ReadObjectForDirectory;
 import org.pegasus.model.scan.ReadObjectsForDirectory;

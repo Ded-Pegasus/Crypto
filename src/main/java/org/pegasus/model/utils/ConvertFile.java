@@ -1,4 +1,4 @@
-package org.pegasus.model.bean;
+package org.pegasus.model.utils;
 
 import oracle.security.crypto.core.RSAPrivateKey;
 import oracle.security.crypto.core.RSAPublicKey;
